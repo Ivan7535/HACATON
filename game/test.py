@@ -31,7 +31,7 @@ class Player(GameSprite):
         self.load_animation()
 
     def load_animation(self):
-        sheet_right = image.load("images/creature-sheet.png").convert_alpha()
+        sheet_right = image.load("game\images\creature-sheet.png").convert_alpha()
         frame_width = 24
         frame_height = 24
         self.frames_right = [
@@ -79,7 +79,7 @@ class Player(GameSprite):
                 self.rect.top = max(self.rect.top, p.rect.bottom)
 
     def fire(self):
-        bullet = Bullet('images/bullet.png', self.rect.centerx, self.rect.top, 15, 20, 15)
+        bullet = Bullet('game/images/bullet.png', self.rect.centerx, self.rect.top, 15, 20, 15)
         bullets.add(bullet)
 
 class Enemy_h(GameSprite):
@@ -99,7 +99,6 @@ class Enemy_h(GameSprite):
             self.rect.x -= self.speed
         else:
             self.rect.x += self.speed
-
 class Enemy_v(GameSprite):
     side = "up"
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed, y1, y2):
@@ -151,20 +150,20 @@ win_width = 1200
 win_height = 700
 window = display.set_mode((win_width, win_height))
 display.set_caption("Лабіринт")
-display.set_icon(image.load("./images/start.png"))
+display.set_icon(image.load("game\images\start.png"))
 
-back_m = transform.scale(image.load("images/fon.png.jpg"), (win_width, win_height))
-start_but = GameSprite("images/start.png", 1000, 10, 200, 80)
-exit_but = GameSprite("images/exit.png", 0, 10, 200, 80)
-mus_but = GameSprite("images/musicb.png", 1000, 600, 80, 80)
+back_m = transform.scale(image.load("game/images/fon.png.jpg"), (win_width, win_height))
+start_but = GameSprite("game/images/start.png", 1000, 10, 200, 80)
+exit_but = GameSprite("game/images/exit.png", 0, 10, 200, 80)
+mus_but = GameSprite("game/images/musicb.png", 1000, 600, 80, 80)
 
 mixer.init()
-mixer.music.load("sounds/TownTheme.mp3")
+mixer.music.load("game/sounds/sounds/TownTheme.mp3")
 mixer.music.set_volume(0.02)
 mixer.music.play(-1)
-lose = mixer.Sound("sounds/Death Is Just Another Paht.mp3")
+lose = mixer.Sound("game/sounds/sounds/Death Is Just Another Path.mp3")
 lose.set_volume(0.02)
-win = mixer.Sound("sounds/Viktor Kraus-Victory!.mp3")
+win = mixer.Sound("game\sounds\sounds\Viktor Kraus - Victory!.mp3")
 win.set_volume(0.02)
 
 total_amount = load_progress()
@@ -175,53 +174,52 @@ amount = 0
 font.init()
 text = font.SysFont(None, 36).render("Coins: " + str(amount), True, (255, 255, 0))
 
-back = transform.scale(image.load("images/display.jpg"), (win_width, win_height))
+back = transform.scale(image.load("game/images/display.png"), (win_width, win_height))
 bullets = sprite.Group()
 barriers = sprite.Group()
 monsters = sprite.Group()
 coins = sprite.Group()
 
-w1 = GameSprite('images/243.jpg',0, 200, 300, 50)
-w2 = GameSprite('images/219.jpg', 250, 200, 50, 400)
+w1 = GameSprite('game/images/243.jpg',0, 200, 300, 50)
+w2 = GameSprite('game/images/219.jpg', 250, 200, 50, 400)
 barriers.add(w1)
 barriers.add(w2)
 
-hero = Player('images/hero.png', 5, win_height - 80, 80, 80, 0, 0)
-final_sprite = GameSprite('images/door.png', win_width - 85, win_height - 100, 80, 80)
+hero = Player('game/images/hero.png', 5, win_height - 80, 80, 80, 0, 0)
+final_sprite = GameSprite('game/images/door.png', win_width - 85, win_height - 100, 80, 80)
 
-monster1 = Enemy_v('images/enemy.png', 1000, 200, 80, 80, 5, 200, 420)
-monster2 = Enemy_h('images/enemy.png', 0, 90, 80, 80, 5, 0, 200)
+monster1 = Enemy_v('game/images/enemy.png', 1000, 200, 80, 80, 5, 200, 420)
+monster2 = Enemy_h('game/images/enemy.png', 0, 90, 80, 80, 5, 0, 200)
 monsters.add(monster1)
 monsters.add(monster2)
 
-coin1 = GameSprite('images/coin.png', 400, 200, 80, 80)
-coin2 = GameSprite('images/coin.png', 200, 600, 80, 80)
+coin1 = GameSprite('game/images/coin.png', 400, 200, 80, 80)
+coin2 = GameSprite('game/images/coin.png', 200, 600, 80, 80)
 coins.add(coin1)
 coins.add(coin2)
 
 ############## 2 lvl #####################
 amount_2 = 0
 
-back_2 = transform.scale(image.load("images/back_2.png"), (win_width, win_height))
+back_2 = transform.scale(image.load("game/images/back_2.png"), (win_width, win_height))
 barriers_2 = sprite.Group()
 monsters_2 = sprite.Group()
 coins_2 = sprite.Group()
 
-w1_2 = GameSprite('images/243.jpg', 400, 300, 400, 50)
-w2_2 = GameSprite('images/219.jpg', 750, 200, 50, 200)
+w1_2 = GameSprite('game/images/243.jpg', 400, 300, 400, 50)
+w2_2 = GameSprite('game/images/219.jpg', 750, 200, 50, 200)
 barriers_2.add(w1_2)
 barriers_2.add(w2_2)
 
-hero_2 = Player('images/hero.png', 5, 5, 80, 80, 0, 0)
-final_sprite_2 = GameSprite('images/door.png', win_width - 85, 100, 80, 80)
+hero_2 = Player('game/images/hero.png', 5, 5, 80, 80, 0, 0)
+final_sprite_2 = GameSprite('game/images/door.png', win_width - 85, 100, 80, 80)
 
-monster1_2 = Enemy_v('images/enemy.png', 1000, 200, 80, 80, 5, 200, 420)
-monster2_2 = Enemy_h('images/enemy.png', 0, 90, 80, 80, 5, 0, 200)
+monster1_2 = Enemy_v('game/images/enemy.png', 1000, 200, 80, 80, 5, 200, 420)
+monster2_2 = Enemy_h('game/images/enemy.png', 0, 90, 80, 80, 5, 0, 200)
 monsters_2.add(monster1_2)
 monsters_2.add(monster2_2)
-
-coin1_2 = GameSprite('images/coin.png',300, 200, 80, 80)
-coin2_2 = GameSprite('images/coin.png', 100, 600, 80, 80)
+coin1_2 = GameSprite('game/images/coin.png',300, 200, 80, 80)
+coin2_2 = GameSprite('game/images/coin.png', 100, 600, 80, 80)
 coins_2.add(coin1_2)
 coins_2.add(coin2_2)
 
@@ -249,7 +247,7 @@ while run:
                     mixer.music.stop()
                     fade(window, win_width, win_height)
                     a = "lvl1"
-                    mixer.music.load("sounds/lvl1.wav")
+                    # mixer.music.load("game/sounds/sounds/lvl1.wav")
                     mixer.music.play(-1)
 
         window.blit(back_m, (0, 0))
@@ -257,7 +255,7 @@ while run:
         mus_but.reset()
         exit_but.reset()
         mouse_pos = mouse.get_pos()
-        exit_but.update(mouse_pos, "images/exit_2.png", 200, 80)
+        exit_but.update(mouse_pos, "game/images/exit_2.png", 200, 80)
     
     elif a == "lvl1":
         for e in event.get():
@@ -313,7 +311,7 @@ while run:
                 finish = True
                 lose.play()
                 mixer.music.stop()
-                img = image.load('images/game_over.png')
+                img = image.load('game/images/gameover.png')
                 window.blit(transform.scale(img, (win_width, win_height)), (0, 0))
             
             if sprite.collide_rect(hero, final_sprite):
@@ -331,7 +329,6 @@ while run:
                     a = "lvl2"
         window.blit(back_m, (0, 0))
         start_but.reset()
-
     elif a == "lvl2":
         for e in event.get():
             if e.type == QUIT:
@@ -386,14 +383,14 @@ while run:
                 finish = True
                 lose.play()
                 mixer.music.stop()
-                img = image.load('images/game_over.png')
+                img = image.load('game/images/gameover.png')
                 window.blit(transform.scale(img, (win_width, win_height)), (0, 0))
             
             if sprite.collide_rect(hero_2, final_sprite_2):
                 finish = True
                 win.play()
                 mixer.music.stop()
-                img = image.load('images/winner.png')
+                img = image.load('game/images/winner.png')
                 window.blit(transform.scale(img, (win_width, win_height)), (0, 0))
         
     time.delay(20)
